@@ -7,28 +7,55 @@ h3{
 .fake{
   animation: fadeIn 3s;
 }
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+   
+------------------
+/* Custom styles for the modal */
+.modal-content {
+  border-radius: 10px; /* Rounded corners for the modal */
+  border: 1px solid #007bff; /* Blue border for the modal */
 }
 
-.modal-content {
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  max-width: 400px;
-  width: 100%;
-  text-align: center;
+.modal-header {
+  background-color: #007bff; /* Header background color */
+  color: white; /* Header text color */
+  border-top-left-radius: 10px; /* Rounded corners for header */
+  border-top-right-radius: 10px; /* Rounded corners for header */
 }
+
+.modal-body {
+  padding: 20px; /* More padding in the body */
+  font-size: 16px; /* Increase font size for readability */
+}
+
+.modal-footer {
+  border-top: none; /* Remove the default top border */
+}
+
+.btn-secondary {
+  background-color: #6c757d; /* Customize the close button color */
+  border: none; /* Remove border */
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268; /* Darker on hover */
+}
+
+/* Optional: Add a shadow effect */
+.modal {
+  transition: transform 0.3s ease-out; /* Smooth transition for modal */
+}
+
+.modal.show {
+  transform: translateY(0); /* Reset transform on show */
+}
+
+.modal.fade {
+  transform: translateY(-30px); /* Slide down effect */
+}
+
+------------
+
+
 .custom-card {
   padding: 10px; /* Adjust padding around the card */
   font-size: 0.9rem; /* Smaller font for a more compact look */

@@ -7,10 +7,6 @@ import emailjs from "emailjs-com";
 
 const App = () => {
   const [menu, setMenu] = useState("home");
-  const [modalMessage, setModalMessage] = useState("");
-  const [showModal, setShowModal] = useState(false);
-
-  // Reference for the contact form
   const formRef = useRef();
 
   // Function to handle form submission
@@ -26,21 +22,24 @@ const App = () => {
       )
       .then(
         (result) => {
-          setModalMessage("Message sent successfully!");
-          setShowModal(true);
+          // Open the modal with success message
+          document.getElementById("exampleModalCenterTitle").innerText = "Success!";
+          document.getElementById("modalMessage").innerText = "Message sent successfully!";
+          const successModal = new window.bootstrap.Modal(document.getElementById('exampleModalCenter'));
+          successModal.show();
         },
         (error) => {
-          setModalMessage("An error occurred, please try again.");
-          setShowModal(true);
+          // Open the modal with error message
+          document.getElementById("exampleModalCenterTitle").innerText = "Error!";
+          document.getElementById("modalMessage").innerText = "An error occurred, please try again.";
+          const errorModal = new window.bootstrap.Modal(document.getElementById('exampleModalCenter'));
+          errorModal.show();
         }
       );
 
     // Clear the form fields after submission
     e.target.reset();
   };
-
-  // Function to close the modal
-  const closeModal = () => setShowModal(false);
 
   return (
     <div>
@@ -147,7 +146,6 @@ const App = () => {
         </div>
       </section>
 
-
       {/* Contact Section with EmailJS integration */}
       <section id="contact" className="container text-center py-5">
         <h3 className="p-5 display-5">Contact Me</h3>
@@ -172,17 +170,43 @@ const App = () => {
         </form>
       </section>
 
-      {/* Modal for showing success/error messages */}
-      {showModal && (
-        <div className="modal-overlay">
-          <div className="modal-content text-center">
-            <p>{modalMessage}</p>
-            <button className="btn btn-secondary mt-3" onClick={closeModal}>
-              Close
-            </button>
+      {/* Bootstrap Modal */}
+      <div
+        className="modal fade"
+        id="exampleModalCenter"
+        tabIndex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-dialog-centered" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div className="modal-body">
+              <p id="modalMessage"></p>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
-      )}
+      </div>
 
       {/* Footer */}
       <footer className="bg-dark text-white mt-5">
@@ -231,10 +255,6 @@ const App = () => {
         <div className="floating-shape shape4"></div>
         <div className="floating-shape shape5"></div>
       </div>
-
-
-
-
     </div>
   );
 };
