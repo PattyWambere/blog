@@ -1,4 +1,5 @@
 // Import necessary packages and assets
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
 import pattyone from "./asset/pattyone.png";
 import pro from "./asset/pro.jpg";
